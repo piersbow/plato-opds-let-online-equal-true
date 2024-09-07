@@ -244,6 +244,8 @@ fn load_and_process_opds() -> Result<(), Error> {
     let settings: Settings = load_toml::<Settings, _>(SETTINGS_PATH)
         .with_context(|| format!("can't load settings from {}", SETTINGS_PATH))?;
 
+    let online = true;
+    
     if !online {
         if !wifi {
             plato::show_notification("Establishing a network connection.");
